@@ -1,7 +1,16 @@
 const express = require("express");
+const mongoose = require("mongoose");
+
+const routes = require("./routes");
 
 const app = express();
 
-app.get("/", (req, res) => res.send("pinto"));
+mongoose.connect(
+  "mongodb+srv://lucasfgs:895b88@todoapp-hsbsr.mongodb.net/TodoApp?retryWrites=true&w=majority",
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
+
+app.use(express.json());
+app.use(routes);
 
 app.listen(5000);
